@@ -15,7 +15,10 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'htmlentities', '~> 4.0'
   s.add_dependency 'json-stream', '~> 0.0'
+  s.add_dependency 'json-write-stream', '~> 1.0'
   s.add_dependency 'nokogiri', '~> 1.0'
+  s.add_dependency 'xml-write-stream', '~> 1.0'
+  s.add_dependency 'yaml-write-stream', '~> 1.0'
 
   s.require_path = 'lib'
   s.files = Dir['{lib,spec}/**/*', 'README.md', 'abroad.gemspec']
