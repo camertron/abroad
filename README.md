@@ -27,6 +27,58 @@ Localization file formats are usually based on some standard format like YAML, b
 
 ## Usage
 
+Abroad provides extractors for reading keys and values from localization files, and serializers for writing them out. The usage for each is slightly different.
+
+### Extractors
+
+Let's say you're working with this Rails YAML file:
+
+```yaml
+en:
+  welcome_message: hello
+  goodbye_message: goodbye
+```
+
+To extract strings from this file, try something like this:
+
+```ruby
+Abroad.extractor('yaml/rails').open('/path/to/en.yml') do |extractor|
+  extractor.extract_each do |key, string|
+    # on first iteration, key == 'welcome_message', string == 'hello'
+    # on second iteration, key == 'goodbye_message', string == 'goodbye'
+  end
+end
+```
+
+The `Abroad.extractor` method returns a registered extractor class, or `nil` if the extractor can't be found. Extractor classes respond to `open`, `from_stream`, and `from_string`, and can either receive a block or not. If passed a block, the file or stream will be automatically closed when the block terminates. If you choose to not pass a block, you're responsible for calling `close` yourself.
+
+Here's an example with all the steps broken down:
+
+```ruby
+extractor_klass = Abroad.extractor('yaml/rails')
+extractor = extractor_klass.open('/path/to/yaml')
+extractor.extract_each do |key, string|
+  ...
+end
+extractor.close
+```
+
+The `extract_each` method on extractor instances returns an enumerable, which means you have access to all the wonderful `Enumerable` methods like `map`, `inject`, etc:
+
+```ruby
+Abroad.extractor('yaml/rails').open('/path/to/en.yml') do |extractor|
+  extractor.extract_each.with_object({}) do |(key, string), result|
+    result[key] = string
+  end
+end
+```
+
+To get a list of all available extractors, use the `extractors` method:
+
+```ruby
+Abroad.extractors  # => ["yaml/rails", "xml/android", ...]
+```
+
 ## Requirements
 
 This project has no external requirements.
