@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="captains">
+        <item>Janeway</item>
+        <item>Sisko</item>
+        <item>Picard</item>
+        <item>Kirk</item>
+    </string-array>
+</resources>

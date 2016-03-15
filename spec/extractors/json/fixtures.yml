@@ -1,0 +1,22 @@
+:key-value:
+  basic.json:
+    - key: foo.bar
+      string: baz
+    - key: hello
+      string: cool string
+    - key: jelly.beans
+      string: popcorn
+  objects.json:
+    - key: foo.bar
+      string: baz
+    - key: hello
+      string: cool string
+    - key: jelly.beans
+      string: popcorn
+  arrays.json:
+    - key: foo.bar
+      string: baz
+    - key: hello
+      string: cool string
+    - key: jelly.beans
+      string: popcorn

@@ -1,0 +1,29 @@
+en:
+  jobs:
+    benefits:
+      -
+        title: Benefits to write home about
+        body:
+          - Competitive salaries and bonuses
+          - Medical, dental, vision, and life insurance plans
+      -
+        title: Stress-free commute
+        body:
+          - Downtown SF location right next to BART and MUNI lines
+          - Free cabs and meals for those late nights
+      -
+        title: Brand-new gadgets
+        body:
+          - Pick out a new Mac or PC desktop or laptop
+          - Big monitors, fancy headphones, and more
+      -
+        title: Stay happy and healthy
+        body:
+          - Catered lunches and a pantry with every snack, drink, and Bi-Rite meal
+          - Gym membership at the Sports Club LA (2 blocks from the office)
+      -
+        title: Playtime anytime
+        body:
+          - Unlimited paid time off
+          - A game room with video games, board games, foosball, ping-pong, and shuffleboard
+          - A Culture Team behind office happy hours and Hawai'i holiday parties

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="internal_markup">I <b>have</b> <a href="foo">internal</a> markup</string>
+    <string name="quoted_markup">"I <b>have</b> <a href="foo">quoted</a> markup"</string>
+</resources>

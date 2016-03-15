@@ -1,0 +1,19 @@
+en:
+  activerecord:
+    attributes:
+      user:
+        unique_name: "Username"
+        password: "Password"
+        email_address: "Email address"
+      email_address:
+        address: "Email address"
+      testimonial:
+        original_text: "Your Story"
+    errors:
+      custom:
+        user:
+          uniqueness_of_unique_name: has already been taken
+          password_does_not_match_unique_name: cannot match username
+          cannot_disable_if_full_access: Cannot disable a user who has full access
+          current_password_blank: Please enter your current password
+          current_password_mismatch: The password you entered does not match our records

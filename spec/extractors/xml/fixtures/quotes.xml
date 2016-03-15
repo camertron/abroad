@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="quotes">"I have quotes"</string>
+    <string name="leading_space">" I have a leading space"</string>
+    <string name="internal_quotes">"I have \"internal\" quotes"</string>
+    <string name="apostrophes">That\'s the ticket</string>
+    <string name="apostrophes_in_quotes">"That's the ticket"</string>
+    <string name="escaped_apostrophes_in_quotes">"That\'s the ticket"</string>
+</resources>

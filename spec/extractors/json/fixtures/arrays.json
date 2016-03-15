@@ -1,0 +1,9 @@
+{
+  "array1": ["1", "2", "3"],
+  "arrayObj": {
+    "array2": ["4", "5"]
+  },
+  "hello": "cool string",
+  "foo.bar": "baz",
+  "jelly.beans": "popcorn"
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="foobar">baz</string>
+    <string name="password_length_too_short">Password is
+too short</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <string name="foobar">baz</string>
+    <string name="password_length_too_short">Password is too short</string>
+    <string name="password_length_too_long">Password is too long</string>
+    <string name="password_empty">Please enter your password.</string>
+    <string name="username_empty">Please enter your email address.</string>
+</resources>

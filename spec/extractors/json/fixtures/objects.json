@@ -1,0 +1,11 @@
+{
+  "smartling" : {
+    "translate_paths" : ["/*", "/*/*"],
+    "source_key_paths" : ["/{*}"],
+    "variants_enabled" : true,
+    "placeholder_format_custom" : ["%s"]
+  },
+  "hello": "cool string",
+  "foo.bar": "baz",
+  "jelly.beans": "popcorn"
+}

@@ -1,0 +1,54 @@
+:android:
+  basic_strings.xml:
+    - key: foobar
+      string: baz
+    - key: password_length_too_short
+      string: Password is too short
+    - key: password_length_too_long
+      string: Password is too long
+    - key: password_empty
+      string: Please enter your password.
+    - key: username_empty
+      string: Please enter your email address.
+  basic_arrays.xml:
+    - key: captains.0
+      string: Janeway
+    - key: captains.1
+      string: Sisko
+    - key: captains.2
+      string: Picard
+    - key: captains.3
+      string: Kirk
+  basic_plurals.xml:
+    - key: horses.zero
+      string: There are no horses
+    - key: horses.one
+      string: There is one horse
+    - key: horses.other
+      string: There are %d horses
+  quotes.xml:
+    - key: quotes
+      string: I have quotes
+    - key: leading_space
+      string: " I have a leading space"
+    - key: internal_quotes
+      string: I have "internal" quotes
+    - key: apostrophes
+      string: That's the ticket
+    - key: apostrophes_in_quotes
+      string: That's the ticket
+    - key: escaped_apostrophes_in_quotes
+      string: That's the ticket
+  markup.xml:
+    - key: internal_markup
+      string: I <b>have</b> <a href="foo">internal</a> markup
+    - key: quoted_markup
+      string: I <b>have</b> <a href="foo">quoted</a> markup
+  newlines.xml:
+    - key: foobar
+      string: baz
+    - key: password_length_too_short
+      string: "Password is\ntoo short"
+  entities.xml:
+    - key: states
+      string: "Alaska & Washington"

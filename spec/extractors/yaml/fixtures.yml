@@ -1,0 +1,75 @@
+:dotted-key:
+  invalid_single_quote_escape_array.yml:
+    - key: foo.bar.0
+      string: baz'boo
+  invalid_single_quote_escape.yml:
+    - key: foo.bar
+      string: baz'boo
+  short.yml:
+    - key: foo.bar
+      string: baz
+  nesting.yml:
+    - key: en.activerecord.attributes.user.unique_name
+      string: Username
+    - key: en.activerecord.attributes.user.password
+      string: Password
+    - key: en.activerecord.attributes.user.email_address
+      string: Email address
+    - key: en.activerecord.attributes.email_address.address
+      string: Email address
+    - key: en.activerecord.attributes.testimonial.original_text
+      string: Your Story
+    - key: en.activerecord.errors.custom.user.uniqueness_of_unique_name
+      string: has already been taken
+    - key: en.activerecord.errors.custom.user.password_does_not_match_unique_name
+      string: cannot match username
+    - key: en.activerecord.errors.custom.user.cannot_disable_if_full_access
+      string: Cannot disable a user who has full access
+    - key: en.activerecord.errors.custom.user.current_password_blank
+      string: Please enter your current password
+    - key: en.activerecord.errors.custom.user.current_password_mismatch
+      string: The password you entered does not match our records
+  arrays.yml:
+    - key: en.jobs.benefits.0
+      string: Benefits to write home about
+    - key: en.jobs.benefits.1
+      string: Stress-free commute
+    - key: en.jobs.benefits.2
+      string: Brand-new gadgets
+    - key: en.jobs.other.0
+      string: Stay happy and healthy
+    - key: en.jobs.other.1
+      string: Playtime anytime
+  arrays_and_hashes.yml:
+    - key: en.jobs.benefits.0.title
+      string: Benefits to write home about
+    - key: en.jobs.benefits.0.body.0
+      string: Competitive salaries and bonuses
+    - key: en.jobs.benefits.0.body.1
+      string: Medical, dental, vision, and life insurance plans
+    - key: en.jobs.benefits.1.title
+      string: Stress-free commute
+    - key: en.jobs.benefits.1.body.0
+      string: Downtown SF location right next to BART and MUNI lines
+    - key: en.jobs.benefits.1.body.1
+      string: Free cabs and meals for those late nights
+    - key: en.jobs.benefits.2.title
+      string: Brand-new gadgets
+    - key: en.jobs.benefits.2.body.0
+      string: Pick out a new Mac or PC desktop or laptop
+    - key: en.jobs.benefits.2.body.1
+      string: Big monitors, fancy headphones, and more
+    - key: en.jobs.benefits.3.title
+      string: Stay happy and healthy
+    - key: en.jobs.benefits.3.body.0
+      string: Catered lunches and a pantry with every snack, drink, and Bi-Rite meal
+    - key: en.jobs.benefits.3.body.1
+      string: Gym membership at the Sports Club LA (2 blocks from the office)
+    - key: en.jobs.benefits.4.title
+      string: Playtime anytime
+    - key: en.jobs.benefits.4.body.0
+      string: Unlimited paid time off
+    - key: en.jobs.benefits.4.body.1
+      string: A game room with video games, board games, foosball, ping-pong, and shuffleboard
+    - key: en.jobs.benefits.4.body.2
+      string: A Culture Team behind office happy hours and Hawai'i holiday parties
