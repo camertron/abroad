@@ -27,7 +27,7 @@ module Abroad
           stream.flush
         end
 
-        protected
+        private
 
         def split_key(key)
           # Doesn't allow dots to come before spaces or at the end of the key.

@@ -42,7 +42,7 @@ module Abroad
           stream.flush
         end
 
-        protected
+        private
 
         def split_key(key)
           if idx = key.rindex('.')
