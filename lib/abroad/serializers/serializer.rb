@@ -6,11 +6,18 @@ module Abroad
 
       class << self
         def from_stream(stream, locale)
-          new(stream, locale)
+          serializer = new(stream, locale)
+
+          if block_given?
+            yield serializer
+            serializer.close
+          else
+            serializer
+          end
         end
 
         def open(file, locale)
-          new(File.open(file), locale)
+          from_stream(File.open(file), locale)
         end
 
         def default_extension
@@ -37,6 +44,11 @@ module Abroad
 
       def flush
         stream.flush
+      end
+
+      def close
+        flush
+        stream.close
       end
     end
 
