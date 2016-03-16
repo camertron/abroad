@@ -35,8 +35,10 @@ Let's say you're working with this Rails YAML file:
 
 ```yaml
 en:
-  welcome_message: hello
-  goodbye_message: goodbye
+  welcome
+    message: hello
+  goodbye
+    message: goodbye
 ```
 
 To extract strings from this file, try something like this:
@@ -44,8 +46,8 @@ To extract strings from this file, try something like this:
 ```ruby
 Abroad.extractor('yaml/rails').open('/path/to/en.yml') do |extractor|
   extractor.extract_each do |key, string|
-    # on first iteration, key == 'welcome_message', string == 'hello'
-    # on second iteration, key == 'goodbye_message', string == 'goodbye'
+    # on first iteration, key == 'welcome.message', string == 'hello'
+    # on second iteration, key == 'goodbye.message', string == 'goodbye'
   end
 end
 ```
@@ -56,7 +58,7 @@ Here's an example with all the steps broken down:
 
 ```ruby
 extractor_klass = Abroad.extractor('yaml/rails')
-extractor = extractor_klass.open('/path/to/yaml')
+extractor = extractor_klass.open('/path/to/en.yml')
 extractor.extract_each do |key, string|
   ...
 end
@@ -77,6 +79,31 @@ To get a list of all available extractors, use the `extractors` method:
 
 ```ruby
 Abroad.extractors  # => ["yaml/rails", "xml/android", ...]
+```
+
+### Serializers
+
+While extractors pull strings out of localization files, serializers write them back in. Serializers conform to a similar interface, but offer different methods to write content out to the stream:
+
+```ruby
+Abroad.serializer('yaml/rails').open('/path/to/es.yml') do |serializer|
+  serializer.write_key_value('welcome.message', 'hola')
+  serializer.write_key_value('goodbye.message', 'adios')
+end
+```
+
+In addition to `write_key_value`, serializer instances also respond to the `write_raw` method, which is capable of writing raw text to the underlying stream. You might use this method if you needed to write a comment to the file, or a preamble at the beginning.
+
+Serializer classes respond to `from_stream` in addition to `open`. Both methods can be called with or without a block. If passed a block, the file or stream will be automatically closed when the block terminates. If you choose to not pass a block, you're responsible for calling `close` yourself.
+
+Here's an example with all the steps broken down:
+
+```ruby
+serializer_klass = Abroad.serializer('yaml/rails')
+serializer = serializer_klass.open('/path/to/es.yml')
+serializer.write_key_value('welcome.message', 'hola')
+serializer.write_key_value('goodbye.message', 'adios')
+serializer.close
 ```
 
 ## Requirements
