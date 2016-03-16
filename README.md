@@ -35,9 +35,9 @@ Let's say you're working with this Rails YAML file:
 
 ```yaml
 en:
-  welcome
+  welcome:
     message: hello
-  goodbye
+  goodbye:
     message: goodbye
 ```
 
@@ -52,7 +52,7 @@ Abroad.extractor('yaml/rails').open('/path/to/en.yml') do |extractor|
 end
 ```
 
-The `Abroad.extractor` method returns a registered extractor class, or `nil` if the extractor can't be found. Extractor classes respond to `open`, `from_stream`, and `from_string`, and can either receive a block or not. If passed a block, the file or stream will be automatically closed when the block terminates. If you choose to not pass a block, you're responsible for calling `close` yourself.
+The `Abroad.extractor` method returns a registered extractor class, or `nil` if the extractor can't be found. Extractor classes respond to `open`, `from_stream`, and `from_string`, and can be called with or without a block. If passed a block, the file or stream will be automatically closed when the block terminates. If you choose to not pass a block, you're responsible for calling `close` yourself.
 
 Here's an example with all the steps broken down:
 
@@ -92,7 +92,7 @@ Abroad.serializer('yaml/rails').open('/path/to/es.yml') do |serializer|
 end
 ```
 
-In addition to `write_key_value`, serializer instances also respond to the `write_raw` method, which is capable of writing raw text to the underlying stream. You might use this method if you needed to write a comment to the file, or a preamble at the beginning.
+In addition to `write_key_value`, serializer instances respond to the `write_raw` method, which is capable of writing raw text to the underlying stream. You might use this method if you needed to write a comment to the file or maybe a preamble at the beginning.
 
 Serializer classes respond to `from_stream` in addition to `open`. Both methods can be called with or without a block. If passed a block, the file or stream will be automatically closed when the block terminates. If you choose to not pass a block, you're responsible for calling `close` yourself.
 
@@ -105,6 +105,27 @@ serializer.write_key_value('welcome.message', 'hola')
 serializer.write_key_value('goodbye.message', 'adios')
 serializer.close
 ```
+
+To get a list of all available serializers, use the `serializers` method:
+
+```ruby
+Abroad.serializers  # => ["yaml/rails", "xml/android", ...]
+```
+
+### Writing Your Own
+
+Conformant _extractors_ should inherit from `Abroad::Extractors::Extractor` and need to define the method `extract_each`. See lib/abroad/extractors/extractor.rb for a quick look at the interface. Methods that raise `NotImplementedError`s are ones you need to define in your subclass.
+
+Conformant _serializers_ should inherit from `Abroad::Serializers::Serializer` and need to define the `write_key_value` and `write_raw` methods. See lib/abroad/serializers/serializer.rb for a quick look at the interface. Methods that raise `NotImplementedError`s are ones you need to define in your subclass.
+
+Once you've finished writing your extractor or serializer, register it with Abroad:
+
+```ruby
+Abroad::Extractors.register('strings/ios', Strings::IosExtractor)
+Abroad::Serializers.register('strings/ios', Strings::IosSerializer)
+```
+
+The first argument to the `register` method is called the serializer or extractor's _id_. The id can really be anything you want, but Abroad has established a convention of format/framework. The format is the underlying file format (eg. json, yaml, xml, etc), and the framework is the platform or application framework you're targeting (eg. iOS, Android, Rails, Django, etc). This makes it easy to avoid writing "one size fits all" classes. For example, it would be straightforward to add support for Chrome's localization file format, which is just json with a special structure. We might register an extractor with the id json/chrome instead of trying to retrofit our existing json extractor with Chrome-specific functionality.
 
 ## Requirements
 
