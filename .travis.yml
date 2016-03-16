@@ -4,7 +4,7 @@ cache: bundler
 rvm:
   - 2.0.0
   - 2.2.0
-  - jruby-head
+  - jruby-1.7.24
 env:
   - 'JRUBY_OPTS="--2.0"'
 script: 'gem install bundler && bundle exec rspec'
