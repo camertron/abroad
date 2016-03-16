@@ -1,4 +1,4 @@
-:key-value:
+:json/key-value:
   basic.json:
     - key: foo.bar
       string: baz

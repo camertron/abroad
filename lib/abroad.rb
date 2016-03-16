@@ -14,12 +14,24 @@ module Abroad
   Serializers.register('xml/android', Serializers::Xml::AndroidSerializer)
 
   class << self
+    def extractors
+      Extractors.available
+    end
+
     def extractor(id)
-      Extractors.get(id).new
+      Extractors.get(id)
+    end
+
+    def serializers
+      Serializers.available
     end
 
     def serializer(id)
       Serializers.get(id)
+    end
+
+    def jruby?
+      RUBY_ENGINE == 'jruby'
     end
   end
 end

@@ -16,10 +16,6 @@ module Abroad
 
         def after_initialize
         end
-
-        def self.default_extension
-          '.xml'
-        end
       end
 
     end

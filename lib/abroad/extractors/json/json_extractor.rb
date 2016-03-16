@@ -2,10 +2,10 @@ module Abroad
   module Extractors
     module Json
 
-      class JsonExtractor
-        def extract_each(json_content, &block)
+      class JsonExtractor < Extractor
+        def extract_each(&block)
           if block_given?
-            parse(json_content, &block)
+            each_entry(&block)
           else
             to_enum(__method__, json_content)
           end

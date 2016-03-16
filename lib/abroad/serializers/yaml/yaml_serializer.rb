@@ -12,10 +12,6 @@ module Abroad
           super
           @writer = YamlWriteStream.from_stream(stream, encoding)
         end
-
-        def self.default_extension
-          '.yml'
-        end
       end
 
     end

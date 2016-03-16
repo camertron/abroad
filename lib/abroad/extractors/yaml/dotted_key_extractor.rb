@@ -3,11 +3,11 @@ module Abroad
     module Yaml
 
       class DottedKeyExtractor < YamlExtractor
-        private
-
-        def each_entry(yaml_content, &block)
-          walk(parse(yaml_content), [], &block)
+        def extract_each(&block)
+          walk(parse, [], &block)
         end
+
+        private
 
         def walk(obj, cur_path, &block)
           case obj

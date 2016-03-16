@@ -8,8 +8,8 @@ module Abroad
       class AndroidExtractor < XmlExtractor
         private
 
-        def each_entry(xml_content, &block)
-          doc = parse(xml_content)
+        def each_entry(&block)
+          doc = parse
           each_string_entry(doc, &block)
           each_array_entry(doc, &block)
           each_plural_entry(doc, &block)

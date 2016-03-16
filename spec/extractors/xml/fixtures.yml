@@ -1,4 +1,4 @@
-:android:
+:xml/android:
   basic_strings.xml:
     - key: foobar
       string: baz

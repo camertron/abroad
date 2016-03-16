@@ -15,6 +15,10 @@ module Abroad
         registered[id]
       end
 
+      def available
+        registered.keys
+      end
+
       private
 
       def registered

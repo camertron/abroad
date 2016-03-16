@@ -1,4 +1,4 @@
-require 'pry-byebug'
+require 'pry-byebug' if RUBY_ENGINE == 'ruby'
 require 'rake'
 require 'rspec'
 require 'abroad'
@@ -16,16 +16,14 @@ RSpec.configure do |config|
     fixture_manifest.each_pair do |extractor_name, expected_results|
       describe extractor_name do
         let(:extractor) do
-          capitalized_name = camelize(extractor_name.to_s)
-          namespace.const_get("#{capitalized_name}Extractor").new
+          Abroad.extractor(extractor_name)
         end
 
         expected_results.each_pair do |expected_file, expected_phrases|
           it "extracts phrases correctly from #{expected_file}" do
             source_file = File.join(fixture_dir, expected_file)
-            contents = File.read(source_file)
 
-            extractor.extract_each(contents).each do |actual_key, actual_string|
+            extractor.open(source_file).extract_each do |actual_key, actual_string|
               expected_string_index = expected_phrases.find_index do |expected_phrase|
                 expected_phrase['key'] == actual_key
               end

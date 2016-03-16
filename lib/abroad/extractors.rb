@@ -1,16 +1,21 @@
 module Abroad
   module Extractors
-    autoload :Json, 'abroad/extractors/json'
-    autoload :Xml,  'abroad/extractors/xml'
-    autoload :Yaml, 'abroad/extractors/yaml'
+    autoload :Extractor, 'abroad/extractors/extractor'
+    autoload :Json,      'abroad/extractors/json'
+    autoload :Xml,       'abroad/extractors/xml'
+    autoload :Yaml,      'abroad/extractors/yaml'
 
     class << self
       def register(id, klass)
-        registered[id] = klass
+        registered[id.to_s] = klass
       end
 
       def get(id)
-        registered[id]
+        registered[id.to_s]
+      end
+
+      def available
+        registered.keys
       end
 
       private

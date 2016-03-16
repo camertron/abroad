@@ -19,11 +19,6 @@ module Abroad
         def open(file, locale)
           from_stream(File.open(file), locale)
         end
-
-        def default_extension
-          raise NotImplementedError,
-            'expected to be implemented in derived classes'
-        end
       end
 
       def initialize(stream, locale, encoding = Encoding::UTF_8)

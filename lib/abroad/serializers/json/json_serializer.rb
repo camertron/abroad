@@ -20,10 +20,6 @@ module Abroad
           writer.flush
           stream.flush
         end
-
-        def self.default_extension
-          '.json'
-        end
       end
 
     end

@@ -7,7 +7,7 @@ module Abroad
       class KeyValueExtractor < JsonExtractor
         private
 
-        def parse(json_content)
+        def each_entry
           open_obj_count = 0
           open_array_count = 0
           key = nil
@@ -27,7 +27,7 @@ module Abroad
             parser.end_array { open_array_count -= 1 }
           end
 
-          parser << json_content
+          parser << stream.read
         rescue ::JSON::Stream::ParserError => e
           raise Abroad::SyntaxError, "Syntax error in json: #{e.message}"
         end
