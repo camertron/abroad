@@ -4,7 +4,11 @@ module Abroad
 
       class DottedKeyExtractor < YamlExtractor
         def extract_each(&block)
-          walk(parse, [], &block)
+          if block_given?
+            walk(parse, [], &block)
+          else
+            to_enum(__method__)
+          end
         end
 
         private

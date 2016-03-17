@@ -7,7 +7,7 @@ module Abroad
           if block_given?
             each_entry(&block)
           else
-            to_enum(__method__, json_content)
+            to_enum(__method__)
           end
         end
       end
