@@ -19,12 +19,12 @@ module Abroad
           end
         end
 
-        def from_string(string)
-          from_stream(StringIO.new(string))
+        def from_string(string, &block)
+          from_stream(StringIO.new(string), &block)
         end
 
-        def open(file)
-          from_stream(File.open(file, 'r'))
+        def open(file, &block)
+          from_stream(File.open(file, 'r'), &block)
         end
       end
 
