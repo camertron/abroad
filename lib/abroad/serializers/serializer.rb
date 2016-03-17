@@ -9,8 +9,9 @@ module Abroad
           serializer = new(stream, locale)
 
           if block_given?
-            yield serializer
-            serializer.close
+            yield(serializer).tap do
+              serializer.close
+            end
           else
             serializer
           end

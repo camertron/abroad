@@ -11,8 +11,9 @@ module Abroad
           extractor = new(stream)
 
           if block_given?
-            yield extractor
-            extractor.close
+            yield(extractor).tap do
+              extractor.close
+            end
           else
             extractor
           end
