@@ -88,7 +88,7 @@ Abroad.extractors  # => ["yaml/rails", "xml/android", ...]
 While extractors pull strings out of localization files, serializers write them back in. Serializers conform to a similar interface, but offer different methods to write content out to the stream:
 
 ```ruby
-Abroad.serializer('yaml/rails').open('/path/to/es.yml') do |serializer|
+Abroad.serializer('yaml/rails').open('/path/to/es.yml', :es) do |serializer|
   serializer.write_key_value('welcome.message', 'hola')
   serializer.write_key_value('goodbye.message', 'adios')
 end
@@ -102,7 +102,7 @@ Here's an example with all the steps broken down:
 
 ```ruby
 serializer_klass = Abroad.serializer('yaml/rails')
-serializer = serializer_klass.open('/path/to/es.yml')
+serializer = serializer_klass.open('/path/to/es.yml', :es)
 serializer.write_key_value('welcome.message', 'hola')
 serializer.write_key_value('goodbye.message', 'adios')
 serializer.close
