@@ -4,7 +4,7 @@ require 'bundler'
 require 'rspec/core/rake_task'
 require 'rubygems/package_task'
 
-require './lib/abroad'
+require 'abroad'
 
 Bundler::GemHelper.install_tasks
 
