@@ -8,7 +8,7 @@ module Abroad
       class YamlSerializer < Serializer
         attr_reader :writer
 
-        def initialize(stream, locale, encoding = Encoding::UTF_8)
+        def initialize(stream, locale, options = {})
           super
           @writer = YamlWriteStream.from_stream(stream, encoding)
         end

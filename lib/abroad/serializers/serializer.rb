@@ -2,7 +2,9 @@ module Abroad
   module Serializers
 
     class Serializer
-      attr_reader :stream, :locale, :encoding
+      DEFAULT_ENCODING = Encoding::UTF_8
+
+      attr_reader :stream, :locale, :options
 
       class << self
         def from_stream(stream, locale)
@@ -22,10 +24,14 @@ module Abroad
         end
       end
 
-      def initialize(stream, locale, encoding = Encoding::UTF_8)
+      def initialize(stream, locale, options = {})
         @stream = stream
         @locale = locale
-        @encoding = encoding
+        @options = options
+      end
+
+      def encoding
+        options.fetch(:encoding, DEFAULT_ENCODING)
       end
 
       def write_key_value(key, value)

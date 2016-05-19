@@ -7,7 +7,7 @@ module Abroad
       class JsonSerializer < Serializer
         attr_reader :writer
 
-        def initialize(stream, locale, encoding = Encoding::UTF_8)
+        def initialize(stream, locale, options = {})
           super
           @writer = JsonWriteStream.from_stream(stream, encoding)
         end

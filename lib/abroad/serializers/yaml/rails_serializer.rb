@@ -5,7 +5,7 @@ module Abroad
       class RailsSerializer < YamlSerializer
         attr_reader :trie
 
-        def initialize(stream, locale, encoding = Encoding::UTF_8)
+        def initialize(stream, locale, options = {})
           super
           @trie = Abroad::Serializers::Trie.new
         end
