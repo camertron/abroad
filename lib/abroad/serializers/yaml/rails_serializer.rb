@@ -16,7 +16,7 @@ module Abroad
 
         def write_key_value(key, value)
           key_parts = split_key(key)
-          encoded_value = value.encode(encoding)
+          encoded_value = value.encode(encoding) if value
           trie.add(key_parts, encoded_value)
         end
 
@@ -57,7 +57,7 @@ module Abroad
         end
 
         def write_value(node, parent_key)
-          value = node ? node.value : ''
+          value = (node ? node.value : '') || ''
           if writer.in_map?
             writer.write_key_value(parent_key, value)
           else
