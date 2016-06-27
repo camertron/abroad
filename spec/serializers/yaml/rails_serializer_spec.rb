@@ -169,7 +169,7 @@ describe Yaml::RailsSerializer do
     })
   end
 
-  it 'unquotes numeric keys' do
+  it 'unquotes but stringifies numeric keys' do
     result = serialize do
       serializer.write_key_value("status_codes.'201'", 'Created')
       serializer.write_key_value("status_codes.'304'", 'Redirect')
@@ -179,9 +179,9 @@ describe Yaml::RailsSerializer do
     expect(result).to eq({
       'fr' => {
         'status_codes' => {
-          201 => 'Created',
-          304 => 'Redirect',
-          500 => 'Server error'
+          '201' => 'Created',
+          '304' => 'Redirect',
+          '500' => 'Server error'
         }
       }
     })
