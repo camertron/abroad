@@ -169,6 +169,24 @@ describe Yaml::RailsSerializer do
     })
   end
 
+  it 'unquotes numeric keys' do
+    result = serialize do
+      serializer.write_key_value("status_codes.'201'", 'Created')
+      serializer.write_key_value("status_codes.'304'", 'Redirect')
+      serializer.write_key_value("status_codes.'500'", 'Server error')
+    end
+
+    expect(result).to eq({
+      'fr' => {
+        'status_codes' => {
+          201 => 'Created',
+          304 => 'Redirect',
+          500 => 'Server error'
+        }
+      }
+    })
+  end
+
   it 'converts nils to empty strings' do
     result = serialize do
       serializer.write_key_value('foo.bar', nil)

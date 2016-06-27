@@ -39,11 +39,19 @@ module Abroad
           key.split(/\.(?!\s)(?!\z)(?!\.)/)
         end
 
+        def unquote_numeric(str)
+          if match = str.match(/\A'(\d+)'\z/)
+            match.captures.first
+          else
+            str
+          end
+        end
+
         # depth-first
         def write_node(node, parent_key)
           if node
             if node.has_children?
-              if children_are_sequence(node)
+              if children_are_sequence?(node)
                 write_sequence(node, parent_key)
               else
                 write_map(node, parent_key)
@@ -73,7 +81,7 @@ module Abroad
           end
 
           node.each_child do |key, child|
-            write_node(child, key)
+            write_node(child, unquote_numeric(key))
           end
 
           writer.close_map
@@ -93,7 +101,7 @@ module Abroad
           writer.close_sequence
         end
 
-        def children_are_sequence(node)
+        def children_are_sequence?(node)
           node.children.all? { |key, _| key =~ /\A[\d]+\z/ }
         end
 

@@ -1,0 +1,5 @@
+en:
+  status_codes:
+    201: Created
+    304: Redirect
+    500: Server error

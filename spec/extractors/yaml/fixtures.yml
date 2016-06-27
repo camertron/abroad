@@ -73,3 +73,10 @@
       string: A game room with video games, board games, foosball, ping-pong, and shuffleboard
     - key: en.jobs.benefits.4.body.2
       string: A Culture Team behind office happy hours and Hawai'i holiday parties
+  numeric_keys.yml:
+    - key: en.status_codes.'201'
+      string: Created
+    - key: en.status_codes.'304'
+      string: Redirect
+    - key: en.status_codes.'500'
+      string: Server error

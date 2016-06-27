@@ -17,7 +17,8 @@ module Abroad
           case obj
             when Hash
               obj.each_pair do |key, val|
-                walk(val, cur_path + [key], &block)
+                segment = is_numeric?(key) ? "'#{key}'" : key
+                walk(val, cur_path + [segment], &block)
               end
             when Array
               obj.each_with_index do |val, idx|
@@ -28,10 +29,12 @@ module Abroad
           end
         end
 
-        private
-
         def scrub_path(path)
           path  # no-op
+        end
+
+        def is_numeric?(str)
+          !!(str.to_s =~ /\d+/)
         end
       end
 
