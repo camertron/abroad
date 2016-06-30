@@ -3,3 +3,5 @@ en:
     201: Created
     304: Redirect
     500: Server error
+  slides:
+    slide_0: foo

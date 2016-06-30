@@ -80,3 +80,5 @@
       string: Redirect
     - key: en.status_codes.'500'
       string: Server error
+    - key: en.slides.slide_0
+      string: foo

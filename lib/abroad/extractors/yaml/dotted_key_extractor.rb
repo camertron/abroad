@@ -34,7 +34,7 @@ module Abroad
         end
 
         def is_numeric?(str)
-          !!(str.to_s =~ /\d+/)
+          !!(str.to_s =~ /\A\d+\z/)
         end
       end
 
