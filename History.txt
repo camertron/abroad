@@ -1,3 +1,6 @@
+== 4.0.1
+* Don't quote partially numeric keys.
+
 == 4.0.0
 * Don't treat numeric keys as array indices. Wrap them in quotes to disambiguate.
 
