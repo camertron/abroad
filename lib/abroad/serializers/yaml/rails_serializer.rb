@@ -66,6 +66,17 @@ module Abroad
 
         def write_value(node, parent_key)
           value = (node ? node.value : '') || ''
+
+          # coerce numeric values
+          value = case value
+            when /\A\d+\z/
+              value.to_i
+            when /\A[\d.]+\z/
+              value.to_f
+            else
+              value
+          end
+
           if writer.in_map?
             writer.write_key_value(parent_key, value)
           else

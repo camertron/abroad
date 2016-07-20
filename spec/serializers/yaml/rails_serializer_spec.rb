@@ -187,6 +187,20 @@ describe Yaml::RailsSerializer do
     })
   end
 
+  it 'writes ints and floats correctly' do
+    result = serialize do
+      serializer.write_key_value('foo', '3')
+      serializer.write_key_value('bar', '3.14')
+    end
+
+    expect(result).to eq({
+      'fr' => {
+        'foo' => 3,
+        'bar' => 3.14
+      }
+    })
+  end
+
   it 'converts nils to empty strings' do
     result = serialize do
       serializer.write_key_value('foo.bar', nil)
