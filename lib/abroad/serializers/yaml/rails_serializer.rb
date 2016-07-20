@@ -71,7 +71,7 @@ module Abroad
           value = case value
             when /\A\d+\z/
               value.to_i
-            when /\A[\d.]+\z/
+            when /\A\d+\.\d+\z/
               value.to_f
             else
               value

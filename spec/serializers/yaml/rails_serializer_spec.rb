@@ -191,12 +191,14 @@ describe Yaml::RailsSerializer do
     result = serialize do
       serializer.write_key_value('foo', '3')
       serializer.write_key_value('bar', '3.14')
+      serializer.write_key_value('baz', '.')
     end
 
     expect(result).to eq({
       'fr' => {
         'foo' => 3,
-        'bar' => 3.14
+        'bar' => 3.14,
+        'baz' => '.'
       }
     })
   end
