@@ -19,8 +19,8 @@ module Abroad
           end
         end
 
-        def open(file, locale, &block)
-          from_stream(File.open(file), locale, &block)
+        def open(file, locale, mode = 'r', &block)
+          from_stream(File.open(file, mode), locale, &block)
         end
       end
 

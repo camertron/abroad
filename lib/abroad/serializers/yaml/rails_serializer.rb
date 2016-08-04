@@ -16,8 +16,7 @@ module Abroad
 
         def write_key_value(key, value)
           key_parts = split_key(key)
-          encoded_value = value.encode(encoding) if value
-          trie.add(key_parts, encoded_value)
+          trie.add(key_parts, encode(value))
         end
 
         def flush
@@ -28,6 +27,19 @@ module Abroad
         end
 
         private
+
+        def encode(value)
+          case value
+            when Array
+              value.map { |elem| encode(elem) }
+            else
+              if value.respond_to?(:encode)
+                value.encode(encoding)
+              else
+                value
+              end
+          end
+        end
 
         def split_key(key)
           # Doesn't allow dots to come before spaces or at the end of the key.
@@ -67,8 +79,17 @@ module Abroad
         def write_value(node, parent_key)
           value = (node ? node.value : '') || ''
 
+          case value
+            when Array
+              write_array_value(parent_key, value)
+            else
+              write_textual_value(parent_key, value)
+          end
+        end
+
+        def coerce(value)
           # coerce numeric values
-          value = case value
+          case value
             when /\A\d+\z/
               value.to_i
             when /\A\d+\.\d+\z/
@@ -76,12 +97,27 @@ module Abroad
             else
               value
           end
+        end
+
+        def write_textual_value(parent_key, value)
+          value = coerce(value)
 
           if writer.in_map?
             writer.write_key_value(parent_key, value)
           else
             writer.write_element(value)
           end
+        end
+
+        def write_array_value(parent_key, elements)
+          # we should _always_ be in a map, but just in case...
+          writer.write_sequence(parent_key) if writer.in_map?
+
+          elements.each do |element|
+            writer.write_element(coerce(element))
+          end
+
+          writer.close_sequence
         end
 
         def write_map(node, parent_key)

@@ -3,26 +3,30 @@ module Abroad
     module Yaml
 
       class DottedKeyExtractor < YamlExtractor
-        def extract_each(&block)
+        def extract_each(options = {}, &block)
           if block_given?
-            walk(parse, [], &block)
+            walk(parse, [], options, &block)
           else
-            to_enum(__method__)
+            to_enum(__method__, options)
           end
         end
 
         private
 
-        def walk(obj, cur_path, &block)
+        def walk(obj, cur_path, options, &block)
           case obj
             when Hash
               obj.each_pair do |key, val|
                 segment = is_numeric?(key) ? "'#{key}'" : key
-                walk(val, cur_path + [segment], &block)
+                walk(val, cur_path + [segment], options, &block)
               end
             when Array
-              obj.each_with_index do |val, idx|
-                walk(val, cur_path + [idx.to_s], &block)
+              if options[:preserve_arrays]
+                yield scrub_path(cur_path).join('.'), obj
+              else
+                obj.each_with_index do |val, idx|
+                  walk(val, cur_path + [idx.to_s], options, &block)
+                end
               end
             else
               yield scrub_path(cur_path).join('.'), obj

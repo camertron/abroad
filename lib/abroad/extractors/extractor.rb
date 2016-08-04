@@ -23,8 +23,8 @@ module Abroad
           from_stream(StringIO.new(string), &block)
         end
 
-        def open(file, &block)
-          from_stream(File.open(file, 'r'), &block)
+        def open(file, mode = 'r', &block)
+          from_stream(File.open(file, mode), &block)
         end
       end
 
@@ -32,7 +32,7 @@ module Abroad
         @stream = stream
       end
 
-      def extract_each
+      def extract_each(options = {})
         raise NotImplementedError,
           'expected to be implemented in derived classes'
       end

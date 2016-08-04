@@ -1,12 +1,10 @@
 require 'spec_helper'
 
-include Abroad::Serializers
-
-describe Yaml::RailsSerializer do
+describe Abroad::Serializers::Yaml::RailsSerializer do
   let(:stream) { StringIO.new }
   let(:locale) { 'fr' }
   let(:serializer) do
-    Yaml::RailsSerializer.new(stream, locale)
+    Abroad::Serializers::Yaml::RailsSerializer.new(stream, locale)
   end
 
   def serialize
@@ -130,6 +128,16 @@ describe Yaml::RailsSerializer do
 
     expect(result).to eq({
       'fr' => { 'foo' => ['a', 'b', 'c'] }
+    })
+  end
+
+  it 'writes successfully if given an array object instead of a string' do
+    result = serialize do
+      serializer.write_key_value('foo.bar', %w(a b c))
+    end
+
+    expect(result).to eq({
+      'fr' => { 'foo' => { 'bar' => %w(a b c) } }
     })
   end
 
