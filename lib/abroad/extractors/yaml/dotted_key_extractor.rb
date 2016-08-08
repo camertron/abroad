@@ -21,7 +21,7 @@ module Abroad
                 walk(val, cur_path + [segment], options, &block)
               end
             when Array
-              if options[:preserve_arrays]
+              if options[:preserve_arrays] && string_array?(obj)
                 yield scrub_path(cur_path).join('.'), obj
               else
                 obj.each_with_index do |val, idx|
@@ -30,6 +30,17 @@ module Abroad
               end
             else
               yield scrub_path(cur_path).join('.'), obj
+          end
+        end
+
+        def string_array?(arr)
+          arr.all? do |elem|
+            case elem
+              when Hash, Array
+                false
+              else
+                true
+            end
           end
         end
 

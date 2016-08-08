@@ -1,3 +1,6 @@
+== 4.1.1
+* Array preservation should only affect string arrays (i.e. not nested objects).
+
 == 4.1.0
 * Provide option to preserve arrays when extracting and serializing YAML.
 
