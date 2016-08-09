@@ -16,7 +16,7 @@ module Abroad
 
         def write_key_value(key, value)
           key_parts = split_key(key)
-          trie.add(key_parts, encode(value))
+          add_key_value(key_parts, value)
         end
 
         def flush
@@ -27,6 +27,23 @@ module Abroad
         end
 
         private
+
+        def add_key_value(key_parts, value)
+          case value
+            when Array
+              value.each_with_index do |element, idx|
+                add_key_value(key_parts + [idx.to_s], element)
+              end
+
+            when Hash
+              value.each_pair do |key, val|
+                add_key_value(key_parts + [key], val)
+              end
+
+            else
+              trie.add(key_parts, encode(value))
+          end
+        end
 
         def encode(value)
           case value
@@ -59,7 +76,6 @@ module Abroad
           end
         end
 
-        # depth-first
         def write_node(node, parent_key)
           if node
             if node.has_children?
@@ -77,13 +93,12 @@ module Abroad
         end
 
         def write_value(node, parent_key)
-          value = (node ? node.value : '') || ''
+          value = coerce((node ? node.value : '') || '')
 
-          case value
-            when Array
-              write_array_value(parent_key, value)
-            else
-              write_textual_value(parent_key, value)
+          if writer.in_map?
+            writer.write_key_value(parent_key, value)
+          else
+            writer.write_element(value)
           end
         end
 
@@ -97,27 +112,6 @@ module Abroad
             else
               value
           end
-        end
-
-        def write_textual_value(parent_key, value)
-          value = coerce(value)
-
-          if writer.in_map?
-            writer.write_key_value(parent_key, value)
-          else
-            writer.write_element(value)
-          end
-        end
-
-        def write_array_value(parent_key, elements)
-          # we should _always_ be in a map, but just in case...
-          writer.write_sequence(parent_key) if writer.in_map?
-
-          elements.each do |element|
-            writer.write_element(coerce(element))
-          end
-
-          writer.close_sequence
         end
 
         def write_map(node, parent_key)
@@ -158,8 +152,8 @@ module Abroad
             arr[idx] = node.children[idx.to_s]
           end
         end
-      end
 
+      end
     end
   end
 end

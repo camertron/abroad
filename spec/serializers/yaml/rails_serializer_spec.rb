@@ -159,6 +159,24 @@ describe Abroad::Serializers::Yaml::RailsSerializer do
     })
   end
 
+  it 'works for nested arrays' do
+    result = serialize do
+      serializer.write_key_value('foo', [
+        { 'bar' => %w(a b), 'baz' => 'boo' },
+        { 'bar' => %w(c d), 'baz' => 'bop' }
+      ])
+    end
+
+    expect(result).to eq({
+      'fr' => {
+        'foo' => [
+          { 'bar' => %w(a b), 'baz' => 'boo' },
+          { 'bar' => %w(c d), 'baz' => 'bop' }
+        ]
+      }
+    })
+  end
+
   it 'writes nested key/value pairs and arrays (in any order)' do
     result = serialize do
       serializer.write_key_value('foo.0.bar.0', 'a')
