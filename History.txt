@@ -1,3 +1,6 @@
+== 4.1.2
+* Fix nested array YAML serialization.
+
 == 4.1.1
 * Array preservation should only affect string arrays (i.e. not nested objects).
 
