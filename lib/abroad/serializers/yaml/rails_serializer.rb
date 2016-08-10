@@ -93,7 +93,7 @@ module Abroad
         end
 
         def write_value(node, parent_key)
-          value = coerce((node ? node.value : '') || '')
+          value = coerce(node ? node.value : '')
 
           if writer.in_map?
             writer.write_key_value(parent_key, value)

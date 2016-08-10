@@ -228,12 +228,4 @@ describe Abroad::Serializers::Yaml::RailsSerializer do
       }
     })
   end
-
-  it 'converts nils to empty strings' do
-    result = serialize do
-      serializer.write_key_value('foo.bar', nil)
-    end
-
-    expect(result).to eq('fr' => { 'foo' => { 'bar' => '' } })
-  end
 end

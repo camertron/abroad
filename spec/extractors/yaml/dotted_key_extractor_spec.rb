@@ -30,4 +30,18 @@ describe Abroad::Extractors::Yaml::DottedKeyExtractor do
       'foo.bar.0.baz' => 'boo'
     )
   end
+
+  it 'handles nils' do
+    content = YAML.dump(foo: nil)
+    extractor = Abroad::Extractors::Yaml::DottedKeyExtractor.from_string(content)
+    enum = extractor.extract_each
+
+    phrases = enum.with_object({}) do |(key, value), ret|
+      ret[key] = value
+    end
+
+    expect(phrases).to eq(
+      'foo' => nil
+    )
+  end
 end
