@@ -8,10 +8,12 @@ module Abroad
   Extractors.register('yaml/dotted-key', Extractors::Yaml::DottedKeyExtractor)
   Extractors.register('json/key-value', Extractors::Json::KeyValueExtractor)
   Extractors.register('xml/android', Extractors::Xml::AndroidExtractor)
+  Extractors.register('txt/lines', Extractors::Txt::LinesExtractor)
 
   Serializers.register('yaml/rails', Serializers::Yaml::RailsSerializer)
   Serializers.register('json/key-value', Serializers::Json::KeyValueSerializer)
   Serializers.register('xml/android', Serializers::Xml::AndroidSerializer)
+  Serializers.register('txt/lines', Serializers::Txt::LinesSerializer)
 
   class << self
     def extractors

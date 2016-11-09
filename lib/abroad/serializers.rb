@@ -2,6 +2,7 @@ module Abroad
   module Serializers
     autoload :Json,       'abroad/serializers/json'
     autoload :Serializer, 'abroad/serializers/serializer'
+    autoload :Txt,        'abroad/serializers/txt'
     autoload :Trie,       'abroad/serializers/trie'
     autoload :Xml,        'abroad/serializers/xml'
     autoload :Yaml,       'abroad/serializers/yaml'
