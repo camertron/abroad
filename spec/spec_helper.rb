@@ -4,10 +4,19 @@ require 'rspec'
 require 'abroad'
 require 'yaml'
 
-RSpec.configure do |config|
-  def camelize(str)
-    str.gsub(/(^\w|[-_]\w)/) { $1[-1].upcase }
+module SpecHelpers
+  def outdent(str)
+    # The special YAML pipe operator treats the text that follows as literal,
+    # and includes newlines, tabs, and spaces. It also strips leading tabs and
+    # spaces. This means you can include a fully indented bit of, say, source
+    # code in your source code, and it will give you back a string with all the
+    # indentation preserved (but without any leading indentation).
+    YAML.load("|#{str}")
   end
+end
+
+RSpec.configure do |config|
+  config.include(SpecHelpers)
 
   shared_examples 'a fixture-based extractor' do |dir, namespace|
     fixture_manifest = YAML.load_file(File.join(dir, 'fixtures.yml'))
