@@ -52,3 +52,6 @@
   entities.xml:
     - key: states
       string: "Alaska & Washington"
+  cdata.xml:
+    - key: foobar
+      string: "Hello <![CDATA[<b>]]>beautiful<![CDATA[</b>]]> world!"

@@ -64,6 +64,8 @@ module Abroad
         def serialize(node, builder)
           if node.text?
             builder.text(unescape(node.text))
+          elsif node.cdata?
+            builder.cdata(node.text)
           else
             builder.send("#{node.name}_", node.attributes) do
               node.children.each do |child|
