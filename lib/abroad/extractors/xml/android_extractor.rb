@@ -56,7 +56,7 @@ module Abroad
           # in double quotes
           unescape(
             strip_enclosing_quotes(
-              builder.doc.xpath('/root/node()').to_xml.strip
+              builder.doc.children.first.children.map(&:to_xml).join.strip
             )
           )
         end
