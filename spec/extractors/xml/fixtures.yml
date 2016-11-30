@@ -55,3 +55,5 @@
   cdata.xml:
     - key: foobar
       string: "Hello <![CDATA[<b>]]>beautiful<![CDATA[</b>]]> world!"
+    - key: bazboo
+      string: "<![CDATA[Hello <b>beautiful</b> world!]]>"

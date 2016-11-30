@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
     <string name="foobar">Hello <![CDATA[<b>]]>beautiful<![CDATA[</b>]]> world!</string>
+    <string name="bazboo"><![CDATA[Hello <b>beautiful</b> world!]]></string>
 </resources>
