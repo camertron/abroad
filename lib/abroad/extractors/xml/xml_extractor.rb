@@ -16,7 +16,7 @@ module Abroad
         private
 
         def parse
-          options = Nokogiri::XML::ParseOptions.new.default_xml.nonet.noent
+          options = Nokogiri::XML::ParseOptions.new.default_xml.nonet
           Nokogiri::XML(stream, nil, nil, options)
         end
       end
