@@ -1,3 +1,6 @@
+== 4.2.1
+* Fix handling of CDATA sections in Android XML.
+
 == 4.2.0
 * Add support for text files.
 
