@@ -2,7 +2,7 @@ require 'htmlentities'
 
 class HTMLEntities
   MAPPINGS['android_xml'] = MAPPINGS['xhtml1'].dup.tap do |mappings|
-    mappings.delete('apos')
+    mappings.delete('apos')  # single quote/apostrophe
   end
 
   FLAVORS << 'android_xml'

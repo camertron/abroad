@@ -16,10 +16,8 @@ module Abroad
         private
 
         def parse
-          Nokogiri::XML(stream) do |config|
-            # don't allow network connections
-            config.options = Nokogiri::XML::ParseOptions::NONET
-          end
+          options = Nokogiri::XML::ParseOptions.new.default_xml.nonet
+          Nokogiri::XML(stream, nil, nil, options)
         end
       end
 
