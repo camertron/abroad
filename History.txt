@@ -1,3 +1,6 @@
+== 4.3.0
+* Nokogiri 1.8 seems to break htmlentities, so restrict the version in the gemspec.
+
 == 4.2.1
 * Fix handling of CDATA sections in Android XML.
 
