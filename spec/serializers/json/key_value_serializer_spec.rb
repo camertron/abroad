@@ -21,6 +21,6 @@ describe Json::KeyValueSerializer do
       serializer.write_key_value('foo', 'bar')
     end
 
-    expect(result).to eq("{\n    \"foo\":\"bar\"}")
+    expect(result).to eq("{\n    \"foo\": \"bar\"}")
   end
 end

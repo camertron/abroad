@@ -11,10 +11,8 @@ module Abroad
         end
 
         def write_key_value(key, value)
-          before = pretty? ? "\n#{' ' * indent_spaces}" : ''
-
           writer.write_key_value(
-            key.encode(encoding), value.encode(encoding), before
+            key.encode(encoding), value.encode(encoding), write_options
           )
         end
 
@@ -25,6 +23,18 @@ module Abroad
         end
 
         private
+
+        def write_options
+          @write_options = { before: before_text, between: between_text }
+        end
+
+        def before_text
+          @before_text ||= pretty? ? "\n#{' ' * indent_spaces}" : ''
+        end
+
+        def between_text
+          @between_text ||= pretty? ? ' ' : ''
+        end
 
         def indent_spaces
           options.fetch(:indent_spaces, DEFAULT_INDENT_SPACES)

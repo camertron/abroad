@@ -1,3 +1,6 @@
+== 4.4.0
+* Add spaces after colons in json key/value serialization.
+
 == 4.3.0
 * Nokogiri 1.8 seems to break htmlentities, so restrict the version in the gemspec.
 
