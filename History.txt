@@ -1,3 +1,6 @@
+== 4.5.0
+* Add support for JSON dotted key format a la Rails YAML.
+
 == 4.4.0
 * Add spaces after colons in json key/value serialization.
 
