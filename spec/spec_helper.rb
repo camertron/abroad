@@ -37,6 +37,8 @@ RSpec.configure do |config|
                 expected_phrase['key'] == actual_key
               end
 
+              next unless expected_string_index
+
               expected_phrase = expected_phrases[expected_string_index]
               expect(expected_phrase).to_not be_nil
               expect(expected_phrase['string']).to eq(actual_string)

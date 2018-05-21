@@ -1,0 +1,10 @@
+{
+  "array1": ["first", "second", "third"],
+  "arrayObj": {
+    "array2": ["fourth", "fifth"]
+  },
+  "jelly": {
+    "beans": "popcorn"
+  },
+  "arrayOfArrays": [["abc", "def"], "ghi"]
+}

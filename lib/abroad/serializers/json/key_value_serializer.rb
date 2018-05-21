@@ -25,7 +25,7 @@ module Abroad
         private
 
         def write_options
-          @write_options = { before: before_text, between: between_text }
+          @write_options ||= { before: before_text, between: between_text }
         end
 
         def before_text

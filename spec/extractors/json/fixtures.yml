@@ -20,3 +20,32 @@
       string: cool string
     - key: jelly.beans
       string: popcorn
+:json/dotted-key:
+  nested_basic.json:
+    - key: foo.bar
+      string: baz
+    - key: hello
+      string: cool string
+    - key: jelly.beans
+      string: popcorn
+    - key: jelly.and.delicious
+      string: red vines
+  nested_arrays.json:
+    - key: array1.0
+      string: first
+    - key: array1.1
+      string: second
+    - key: array1.2
+      string: third
+    - key: arrayObj.array2.0
+      string: fourth
+    - key: arrayObj.array2.1
+      string: fifth
+    - key: jelly.beans
+      string: popcorn
+    - key: arrayOfArrays.0.0
+      string: abc
+    - key: arrayOfArrays.0.1
+      string: def
+    - key: arrayOfArrays.1
+      string: ghi
