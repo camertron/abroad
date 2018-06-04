@@ -1,3 +1,6 @@
+== 4.5.1
+* Loosen nokogiri dependency.
+
 == 4.5.0
 * Add support for JSON dotted key format a la Rails YAML.
 
