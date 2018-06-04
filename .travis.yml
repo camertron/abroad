@@ -2,9 +2,7 @@ language: ruby
 sudo: false
 cache: bundler
 rvm:
-  - 2.0.0
-  - 2.2.0
-  - jruby-1.7.24
-env:
-  - 'JRUBY_OPTS="--2.0"'
+  - 2.4.2
+  - 2.5.1
+  - jruby-9.1.17.0
 script: 'bundle exec rspec'
