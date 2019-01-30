@@ -1,10 +1,4 @@
 :yaml/dotted-key:
-  invalid_single_quote_escape_array.yml:
-    - key: foo.bar.0
-      string: baz'boo
-  invalid_single_quote_escape.yml:
-    - key: foo.bar
-      string: baz'boo
   short.yml:
     - key: foo.bar
       string: baz

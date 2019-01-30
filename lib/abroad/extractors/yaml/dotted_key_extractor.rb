@@ -4,11 +4,8 @@ module Abroad
 
       class DottedKeyExtractor < YamlExtractor
         def extract_each(options = {}, &block)
-          if block_given?
-            walk(parse, [], options, &block)
-          else
-            to_enum(__method__, options)
-          end
+          return to_enum(__method__, options) unless block_given?
+          walk(parse, [], options, &block)
         end
 
         private

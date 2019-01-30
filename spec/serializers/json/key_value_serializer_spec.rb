@@ -7,7 +7,7 @@ describe Json::KeyValueSerializer do
   let(:locale) { 'fr-FR' }
 
   let(:serializer) do
-    Json::KeyValueSerializer.new(stream, locale)
+    Json::KeyValueSerializer.new(stream, locale, pretty: true)
   end
 
   def serialize
@@ -21,6 +21,6 @@ describe Json::KeyValueSerializer do
       serializer.write_key_value('foo', 'bar')
     end
 
-    expect(result).to eq("{\n    \"foo\": \"bar\"}")
+    expect(result).to eq("{\n  \"foo\": \"bar\"\n}")
   end
 end

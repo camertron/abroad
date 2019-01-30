@@ -7,8 +7,8 @@ module Abroad
       attr_reader :stream, :locale, :options
 
       class << self
-        def from_stream(stream, locale)
-          serializer = new(stream, locale)
+        def from_stream(stream, locale, options = {})
+          serializer = new(stream, locale, options)
 
           if block_given?
             yield(serializer).tap do
@@ -19,8 +19,8 @@ module Abroad
           end
         end
 
-        def open(file, locale, mode = 'r', &block)
-          from_stream(File.open(file, mode), locale, &block)
+        def open(file, locale, mode = 'r', options = {}, &block)
+          from_stream(File.open(file, mode), locale, options, &block)
         end
       end
 

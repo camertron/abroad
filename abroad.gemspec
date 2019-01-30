@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'htmlentities', '~> 4.0'
   s.add_dependency 'json-stream', '~> 0.0'
-  s.add_dependency 'json-write-stream', '~> 1.2'
+  s.add_dependency 'json-write-stream', '~> 2.0'
   s.add_dependency 'nokogiri', '~> 1.8'
   s.add_dependency 'xml-write-stream', '~> 1.0'
   s.add_dependency 'yaml-write-stream', '~> 2.0'

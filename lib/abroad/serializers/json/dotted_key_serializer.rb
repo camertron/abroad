@@ -39,7 +39,7 @@ module Abroad
           if node
             if node.has_children?
               if children_are_sequence?(node)
-                write_sequence(node, parent_key)
+                write_array(node, parent_key)
               else
                 write_object(node, parent_key)
               end
@@ -75,18 +75,18 @@ module Abroad
           writer.close_object
         end
 
-        def write_sequence(node, parent_key)
+        def write_array(node, parent_key)
           if writer.in_object?
-            writer.write_sequence(parent_key)
+            writer.write_array(parent_key)
           else
-            writer.write_sequence
+            writer.write_array
           end
 
           generate_sequence(node).each do |element|
             write_node(element, nil)
           end
 
-          writer.close_sequence
+          writer.close_array
         end
 
         def children_are_sequence?(node)

@@ -9,7 +9,7 @@ module Abroad
 
         def initialize(stream, locale, options = {})
           super
-          @writer = JsonWriteStream.from_stream(stream, encoding)
+          @writer = JsonWriteStream.from_stream(stream, options)
         end
 
         def write_raw(text)
